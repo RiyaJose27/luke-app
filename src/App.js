@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Form from './components/Form';
+import PlanetComponent from "./components/PlanetComponent";
+import PeopleComponent from "./components/PeopleComponent";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <h1>Luke API</h1>
+      <Form />
+      <Switch>
+        <Route path="/people/:id">
+        <PeopleComponent />
+        </Route>
+        <Route path="/planets/:id">
+          <PlanetComponent />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+    
   );
 }
 
